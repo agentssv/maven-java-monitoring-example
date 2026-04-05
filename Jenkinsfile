@@ -63,10 +63,10 @@ pipeline {
             steps {
                 echo '========== SIMULATED DEPLOYMENT =========='
                 echo "Deploying ${APP_NAME} version ${APP_VERSION}"
-                bat 'if exist "C:\deploy" rmdir /s /q "C:\deploy"'
-                bat 'mkdir C:\deploy'
-                bat 'copy target\*.jar C:\deploy\'
-                echo 'Deployment simulation complete! Files copied to C:\deploy'
+                bat 'if exist "C:\\deploy" rmdir /s /q "C:\\deploy"'
+                bat 'mkdir C:\\deploy'
+                bat 'copy target\\*.jar C:\\deploy\\'
+                echo 'Deployment simulation complete! Files copied to C:\\deploy'
             }
         }
 
