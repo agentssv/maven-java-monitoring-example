@@ -75,20 +75,23 @@ pipeline {
     post {
         always {
             echo '========== Archiving Build Artifacts =========='
-            archiveArtifacts artifacts: "target/*.jar", allowEmptyArchive: true
+            archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
         }
-
         success {
             echo 'PIPELINE SUCCEEDED!'
-            mail to: 'avnssvasisht@gmail.com',
-                 subject: "SUCCESS: ${APP_NAME} build #${env.BUILD_NUMBER}",
-                 body: "Build succeeded! View: ${env.BUILD_URL}"
+            emailext(
+                to: 'avnssvasisht@gmail.com',
+                subject: "SUCCESS: ${APP_NAME} build #${env.BUILD_NUMBER}",
+                body: "Build succeeded! View: ${env.BUILD_URL}"
+            )    
         }
         failure {
             echo 'PIPELINE FAILED!'
-            mail to: 'avnssvasisht@gmail.com',
-                 subject: "FAILURE: ${APP_NAME} build #${env.BUILD_NUMBER}",
-                 body: "Build failed! View: ${env.BUILD_URL}"
+            emailext(
+                to: 'avnssvasisht@gmail.com',
+                subject: "FAILURE: ${APP_NAME} build #${env.BUILD_NUMBER}",
+                body: "Build failed! View: ${env.BUILD_URL}"
+            )
         }
     }
 }
