@@ -12,5 +12,4 @@ public class ActuatorDemoApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
